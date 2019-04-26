@@ -54,7 +54,7 @@ case "${1}" in
     build_ui
     build_manual
     build_server
-    test_server
+    # test_server
     # build_cli
     ;;
   cli)
