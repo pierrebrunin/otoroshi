@@ -47,7 +47,7 @@ Resources:
     Properties: 
       ApplicationName: !Ref 'EBApplication' 
       Description: The application version number. 
-      SourceBundle: 'target/ROOT' 
+      SourceBundle: '/codebuild/output/src468106784/src/otoroshi/target/scala-2.12/otoroshi.jar' 
   EBConfigurationTemplate: 
     Description: The AWS Elastic Beanstalk configuration template to be created for this project, which defines configuration settings used to deploy different versions of an application. 
     Type: AWS::ElasticBeanstalk::ConfigurationTemplate 
