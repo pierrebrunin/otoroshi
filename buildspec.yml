@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - sh ./scripts/build.sh all
+      - mv otoroshi/target/scala-2.12/otoroshi.jar .
+artifacts:
+  type: zip
+  files:
+    - 'otoroshi.jar'
+    - 'Procfile'
+    - 'run.sh'
+    - '.ebextensions/**/*'
+cache:
+  paths:
+    - '/root/.ivy2/cache/**/*'
