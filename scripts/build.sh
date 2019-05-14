@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+set -o pipefail
+set -o nounset
+set -o errexit
+
+err_report() {
+    echo "Exited with error on line $1"
+}
+trap 'err_report $LINENO' ERR
+
 LOCATION=`pwd`
 
 clean () {
@@ -48,7 +57,10 @@ test_server () {
   # rc=$?; if [ $rc != 0 ]; then exit $rc; fi
 }
 
-case "${1}" in
+# Get command or default to 'default' value
+CMD="${1-default}"
+
+case "${CMD}" in
   all)
     clean
     build_ui
@@ -72,13 +84,17 @@ case "${1}" in
   server)
     build_server
     ;;
-  *)
+  default)
     clean
     build_ui
     build_manual
     build_server
     test_server
     build_cli
+    ;;
+  *)
+    echo "Unknown option ${CMD}"
+    exit 1
 esac
 
 exit ${?}
