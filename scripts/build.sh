@@ -12,12 +12,15 @@ trap 'err_report $LINENO' ERR
 LOCATION=`pwd`
 
 clean () {
-  cd $LOCATION/clients/cli
-  cargo clean
   cd $LOCATION
   rm -rf $LOCATION/otoroshi/target/universal
   rm -rf $LOCATION/manual/target/universal
   rm -rf $LOCATION/docs/manual
+}
+
+clean_cli () {
+  cd $LOCATION/clients/cli
+  cargo clean
 }
 
 build_cli () {
@@ -78,6 +81,9 @@ case "${CMD}" in
   clean)
     clean
     ;;
+  clean_cli)
+    clean_cli
+    ;;
   manual)
     manual
     ;;
@@ -90,6 +96,7 @@ case "${CMD}" in
     build_manual
     build_server
     test_server
+    clean_cli
     build_cli
     ;;
   *)
