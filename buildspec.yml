@@ -3,7 +3,7 @@ version: 0.2
 phases:
   build:
     commands:
-      - sh ./scripts/build.sh all
+      - ./scripts/build.sh all
       - mv otoroshi/target/scala-2.12/otoroshi.jar .
 artifacts:
   type: zip
