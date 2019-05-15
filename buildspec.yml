@@ -5,11 +5,11 @@ phases:
     commands:
       - chmod u+x ./scripts/build.sh
       - ./scripts/build.sh all
-      - mv otoroshi/target/scala-2.12/otoroshi.jar app.jar
+      - mv otoroshi/target/scala-2.12/otoroshi.jar .
 artifacts:
   type: zip
   files:
-    - 'app.jar'
+    - 'otoroshi.jar'
     - 'Procfile'
     - 'run.sh'
     - '.ebextensions/**/*'
